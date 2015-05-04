@@ -1,9 +1,11 @@
 package uz.shift.colorpicker;
 
 import android.app.Activity;
+import android.content.pm.FeatureInfo;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Window;
 import android.widget.TextView;
 
 public class MainActivity extends Activity {
@@ -20,6 +22,9 @@ public class MainActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+
+		requestWindowFeature(Window.FEATURE_NO_TITLE);
+
 		setContentView(R.layout.activity_main);
 
 		colorPicker = (LineColorPicker) findViewById(R.id.picker);
