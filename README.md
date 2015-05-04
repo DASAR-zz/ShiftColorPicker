@@ -34,6 +34,9 @@ colorPicker.setOnColorChangedListener(new OnColorChangedListener() {
 int color = colorPicker.getColor();
 ```
 
+#Downlaod
+[Releases](https://github.com/DASAR/ShiftColorPicker/releases)
+
 #TODO
 * Vertical version
 * Expand/colapse animations
