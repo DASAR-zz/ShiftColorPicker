@@ -43,6 +43,10 @@ int color = colorPicker.getColor();
 [Releases](https://github.com/DASAR/ShiftColorPicker/releases)
 or grab latest version from repository.
 
+##Requirements
+
+Android 2.3 (Gingerbread) and later.
+
 ##Todo
 * Maven/Gradle support
 * Expand/colapse animations
