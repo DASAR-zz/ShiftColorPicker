@@ -1,7 +1,6 @@
 package uz.shift.colorpicker;
 
 import android.app.Activity;
-import android.content.pm.FeatureInfo;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
@@ -40,7 +39,7 @@ public class MainActivity extends Activity {
 		colorPicker.setColors(colors);
 
 		// Set selected color
-		colorPicker.setColor(colors[2]);
+		colorPicker.setSelectedColor(colors[0]);
 
 		// Get selected color
 		int color = colorPicker.getColor();

@@ -21,9 +21,11 @@ public class LineColorPicker extends View {
 	// indicate if nothing selected
 	boolean isColorSelected = false;
 
-	private int selectedColor = -1;
+	private int selectedColor = colors[0];
 
 	private OnColorChangedListener onColorChanged;
+
+	private int cellSize;
 
 	public LineColorPicker(Context context, AttributeSet attrs) {
 		super(context, attrs);
@@ -35,8 +37,6 @@ public class LineColorPicker extends View {
 	@Override
 	protected void onDraw(Canvas canvas) {
 		super.onDraw(canvas);
-
-		int cellSize = Math.round(canvas.getWidth() / (colors.length * 1f));
 
 		rect.left = 0;
 		rect.top = 0;
@@ -88,7 +88,7 @@ public class LineColorPicker extends View {
 		case MotionEvent.ACTION_UP:
 			newColor = getColorAtXY(event.getRawX(), event.getRawY());
 
-			setColor(newColor);
+			setSelectedColor(newColor);
 
 			if (isClick) {
 				performClick();
@@ -99,7 +99,7 @@ public class LineColorPicker extends View {
 		case MotionEvent.ACTION_MOVE:
 			newColor = getColorAtXY(event.getRawX(), event.getRawY());
 
-			setColor(newColor);
+			setSelectedColor(newColor);
 
 			break;
 		case MotionEvent.ACTION_CANCEL:
@@ -211,6 +211,8 @@ public class LineColorPicker extends View {
 	@Override
 	protected void onSizeChanged(int w, int h, int oldw, int oldh) {
 		super.onSizeChanged(w, h, oldw, oldh);
+
+		cellSize = Math.round(getWidth() / (colors.length * 1f));
 	}
 
 	/**
@@ -221,24 +223,66 @@ public class LineColorPicker extends View {
 	}
 
 	/**
-	 * Set selected color.
+	 * Set selected color as color value from palette.
 	 */
-	public void setColor(int color) {
+	public void setSelectedColor(int color) {
 
+		// not from current palette
+		if (!containsColor(colors, color)) {
+			return;
+		}
+
+		// do we need to re-draw view?
 		if (!isColorSelected || selectedColor != color) {
 			this.selectedColor = color;
+
 			isColorSelected = true;
+
 			invalidate();
 
 			onColorChanged(color);
 		}
 	}
 
+	/**
+	 * Set selected color as index from palete
+	 */
+	public void setSelectedColorPosition(int position) {
+		setSelectedColor(colors[position]);
+	}
+
+	/**
+	 * Set picker palette
+	 */
 	public void setColors(int[] colors) {
 		// TODO: selected color can be NOT in set of colors
 		// FIXME: colors can be null
 		this.colors = colors;
+
+		if (!containsColor(colors, selectedColor)) {
+			selectedColor = colors[0];
+		}
+
+		cellSize = Math.round(getWidth() / (colors.length * 1f));
+
 		invalidate();
+	}
+
+	/**
+	 * Return current picker palete
+	 */
+	public int[] getColors() {
+		return colors;
+	}
+
+	private boolean containsColor(int[] colors, int c) {
+		for (int i = 0; i < colors.length; i++) {
+			if (colors[i] == c)
+				return true;
+
+		}
+
+		return false;
 	}
 
 	public void setOnColorChangedListener(OnColorChangedListener l) {

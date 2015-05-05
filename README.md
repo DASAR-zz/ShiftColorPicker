@@ -20,7 +20,7 @@ colorPicker = (LineColorPicker) findViewById(R.id.picker);
 colorPicker.setColors(new int[] {Color.RED,Color.GREEN,Color.BLUE,Color.YELLOW});
 
 // set selected color [optional]
-colorPicker.setColor(Color.RED);
+colorPicker.setSelectedColor(Color.RED);
 
 // set on change listener
 colorPicker.setOnColorChangedListener(new OnColorChangedListener() {
