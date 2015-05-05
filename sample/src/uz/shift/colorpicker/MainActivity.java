@@ -11,7 +11,7 @@ public class MainActivity extends Activity {
 
 	protected static final String TAG = "ShiftPicker";
 
-	private LineColorPicker colorPicker;
+	private LineColorPicker horizontalPicker, verticalPicker;
 
 	private TextView tvColor;
 
@@ -26,9 +26,15 @@ public class MainActivity extends Activity {
 
 		setContentView(R.layout.activity_main);
 
-		colorPicker = (LineColorPicker) findViewById(R.id.picker);
+		horizontalPicker = (LineColorPicker) findViewById(R.id.picker);
+
+		verticalPicker = (LineColorPicker) findViewById(R.id.picker2);
+
 		tvColor = (TextView) findViewById(R.id.textViewColor);
 
+		verticalPicker.setColors(generateColors(Color.BLUE, Color.RED, 10));
+
+		// Create palette from HEX values
 		int[] colors = new int[pallete.length];
 
 		for (int i = 0; i < colors.length; i++) {
@@ -36,17 +42,17 @@ public class MainActivity extends Activity {
 		}
 
 		// Set palette
-		colorPicker.setColors(colors);
+		horizontalPicker.setColors(colors);
 
-		// Set selected color
-		colorPicker.setSelectedColor(colors[0]);
+		// Set selected color [optional]
+		horizontalPicker.setSelectedColor(colors[0]);
 
 		// Get selected color
-		int color = colorPicker.getColor();
+		int color = horizontalPicker.getColor();
 
 		updateColor(color);
 
-		colorPicker.setOnColorChangedListener(new OnColorChangedListener() {
+		OnColorChangedListener onChangeListener = new OnColorChangedListener() {
 
 			@Override
 			public void onColorChanged(int c) {
@@ -54,10 +60,39 @@ public class MainActivity extends Activity {
 
 				updateColor(c);
 			}
-		});
+		};
+
+		horizontalPicker.setOnColorChangedListener(onChangeListener);
+		verticalPicker.setOnColorChangedListener(onChangeListener);
 
 	}
 
+	/**
+	 * Generate palette of count colors
+	 */
+	private int[] generateColors(int from, int to, int count) {
+		int[] palette = new int[count];
+
+		float[] hsvFrom = new float[3];
+		float[] hsvTo = new float[3];
+
+		Color.colorToHSV(from, hsvFrom);
+		Color.colorToHSV(to, hsvTo);
+
+		float step = (hsvTo[0] - hsvFrom[0]) / count;
+
+		for (int i = 0; i < count; i++) {
+			palette[i] = Color.HSVToColor(hsvFrom);
+
+			hsvFrom[0] += step;
+		}
+
+		return palette;
+	}
+
+	/**
+	 * Display selected color
+	 */
 	private void updateColor(int color) {
 		String hex = Integer.toHexString(color);
 

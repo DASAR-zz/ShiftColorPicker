@@ -6,12 +6,24 @@
     tools:context="uz.shift.colorpicker.MainActivity" >
 
     <uz.shift.colorpicker.LineColorPicker
+        xmlns:app="http://schemas.android.com/apk/res/uz.shift.colorpicker"
         android:id="@+id/picker"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="48dp" />
+        android:layout_marginTop="48dp"
+        app:orientation="horizontal" />
+
+    <uz.shift.colorpicker.LineColorPicker
+        xmlns:app="http://schemas.android.com/apk/res/uz.shift.colorpicker"
+        android:id="@+id/picker2"
+        android:layout_width="60dp"
+        android:layout_height="400dp"
+        android:layout_below="@+id/picker"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        app:orientation="vertival" />
 
     <TextView
         android:id="@+id/textViewColor"

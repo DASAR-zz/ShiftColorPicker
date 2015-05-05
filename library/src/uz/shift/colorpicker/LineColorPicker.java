@@ -1,6 +1,7 @@
 package uz.shift.colorpicker;
 
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Paint.Style;
@@ -12,6 +13,9 @@ import android.view.MotionEvent;
 import android.view.View;
 
 public class LineColorPicker extends View {
+
+	private static final int HORIZONTAL = 0;
+	private static final int VERTICAL = 1;
 
 	int[] colors = Palette.DEFAULT;
 
@@ -27,17 +31,67 @@ public class LineColorPicker extends View {
 
 	private int cellSize;
 
+	private int mOrientation = HORIZONTAL;
+
 	public LineColorPicker(Context context, AttributeSet attrs) {
 		super(context, attrs);
 
 		paint = new Paint();
 		paint.setStyle(Style.FILL);
+
+		TypedArray a = context.getTheme().obtainStyledAttributes(attrs,
+				R.styleable.LineColorPicker, 0, 0);
+
+		try {
+			mOrientation = a.getInteger(
+					R.styleable.LineColorPicker_orientation, HORIZONTAL);
+		} finally {
+			a.recycle();
+		}
 	}
 
 	@Override
 	protected void onDraw(Canvas canvas) {
 		super.onDraw(canvas);
 
+		if (mOrientation == HORIZONTAL) {
+			drawHorizontalPicker(canvas);
+		} else {
+			drawVerticalPicker(canvas);
+		}
+
+	}
+
+	private void drawVerticalPicker(Canvas canvas) {
+		rect.left = 0;
+		rect.top = 0;
+		rect.right = canvas.getWidth();
+		rect.bottom = 0;
+
+		// 8%
+		int margin = Math.round(canvas.getWidth() * 0.08f);
+
+		for (int i = 0; i < colors.length; i++) {
+
+			paint.setColor(colors[i]);
+
+			rect.top = rect.bottom;
+			rect.bottom += cellSize;
+
+			if (isColorSelected && colors[i] == selectedColor) {
+				rect.left = 0;
+				rect.right = canvas.getWidth();
+			} else {
+				rect.left = margin;
+				rect.right = canvas.getWidth() - margin;
+			}
+
+			canvas.drawRect(rect, paint);
+		}
+
+	}
+
+	private void drawHorizontalPicker(Canvas canvas) {
 		rect.left = 0;
 		rect.top = 0;
 		rect.right = 0;
@@ -63,7 +117,6 @@ public class LineColorPicker extends View {
 
 			canvas.drawRect(rect, paint);
 		}
-
 	}
 
 	private void onColorChanged(int color) {
@@ -73,6 +126,8 @@ public class LineColorPicker extends View {
 	}
 
 	private boolean isClick = false;
+	private int screenW;
+	private int screenH;
 
 	@Override
 	public boolean onTouchEvent(MotionEvent event) {
@@ -86,7 +141,7 @@ public class LineColorPicker extends View {
 			isClick = true;
 			break;
 		case MotionEvent.ACTION_UP:
-			newColor = getColorAtXY(event.getRawX(), event.getRawY());
+			newColor = getColorAtXY(event.getX(), event.getY());
 
 			setSelectedColor(newColor);
 
@@ -97,7 +152,7 @@ public class LineColorPicker extends View {
 			break;
 
 		case MotionEvent.ACTION_MOVE:
-			newColor = getColorAtXY(event.getRawX(), event.getRawY());
+			newColor = getColorAtXY(event.getX(), event.getY());
 
 			setSelectedColor(newColor);
 
@@ -122,18 +177,32 @@ public class LineColorPicker extends View {
 	 */
 	private int getColorAtXY(float x, float y) {
 
-		// FIXME: colors.length == 0 -> devision by ZERO.
-		int cellSize = Math.round(getWidth() / (colors.length * 1f));
+		// FIXME: colors.length == 0 -> devision by ZERO.s
 
-		int left = 0;
-		int right = 0;
+		if (mOrientation == HORIZONTAL) {
+			int left = 0;
+			int right = 0;
 
-		for (int i = 0; i < colors.length; i++) {
-			left = right;
-			right += cellSize;
+			for (int i = 0; i < colors.length; i++) {
+				left = right;
+				right += cellSize;
 
-			if (left <= x && right >= x) {
-				return colors[i];
+				if (left <= x && right >= x) {
+					return colors[i];
+				}
+			}
+
+		} else {
+			int top = 0;
+			int bottom = 0;
+
+			for (int i = 0; i < colors.length; i++) {
+				top = bottom;
+				bottom += cellSize;
+
+				if (y >= top && y <= bottom) {
+					return colors[i];
+				}
 			}
 		}
 
@@ -210,10 +279,22 @@ public class LineColorPicker extends View {
 
 	@Override
 	protected void onSizeChanged(int w, int h, int oldw, int oldh) {
-		super.onSizeChanged(w, h, oldw, oldh);
 
-		cellSize = Math.round(getWidth() / (colors.length * 1f));
+		screenW = w;
+		screenH = h;
+
+		recalcCellSize();
+
+		super.onSizeChanged(w, h, oldw, oldh);
 	}
+
+	// @Override
+	// protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+	// int parentWidth = MeasureSpec.getSize(widthMeasureSpec);
+	// int parentHeight = MeasureSpec.getSize(heightMeasureSpec);
+	// this.setMeasuredDimension(parentWidth, parentHeight);
+	// super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+	// }
 
 	/**
 	 * Return currently selected color.
@@ -263,9 +344,20 @@ public class LineColorPicker extends View {
 			selectedColor = colors[0];
 		}
 
-		cellSize = Math.round(getWidth() / (colors.length * 1f));
+		recalcCellSize();
 
 		invalidate();
+	}
+
+	private int recalcCellSize() {
+
+		if (mOrientation == HORIZONTAL) {
+			cellSize = Math.round(screenW / (colors.length * 1f));
+		} else {
+			cellSize = Math.round(screenH / (colors.length * 1f));
+		}
+
+		return cellSize;
 	}
 
 	/**
@@ -275,6 +367,9 @@ public class LineColorPicker extends View {
 		return colors;
 	}
 
+	/**
+	 * Return true if palette contains this color
+	 */
 	private boolean containsColor(int[] colors, int c) {
 		for (int i = 0; i < colors.length; i++) {
 			if (colors[i] == c)
@@ -285,6 +380,11 @@ public class LineColorPicker extends View {
 		return false;
 	}
 
+	/**
+	 * Set onColorChanged listener
+	 * 
+	 * @param l
+	 */
 	public void setOnColorChangedListener(OnColorChangedListener l) {
 		this.onColorChanged = l;
 	}
