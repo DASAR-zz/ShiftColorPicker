@@ -1,8 +1,8 @@
-#ShiftColorPicker
+##ShiftColorPicker
 
 ![Alt text](/screenshot.png?raw=true)
 
-#Usage
+##Usage
 
 Add view to your activity's layout and specify orientation:
 ```xml
@@ -36,16 +36,16 @@ colorPicker.setOnColorChangedListener(new OnColorChangedListener() {
 int color = colorPicker.getColor();
 ```
 
-#Downlaod
+##Downlaod
 [Releases](https://github.com/DASAR/ShiftColorPicker/releases)
 or grab latest version from repository.
 
-#TODO
+##Todo
 * Maven/Gradle support
 * Expand/colapse animations
 * More color pickers in deferent styles
 
-#LICENSE
+##License
 
 The MIT License (MIT)
 
