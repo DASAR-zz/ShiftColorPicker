@@ -1,8 +1,11 @@
-##ShiftColorPicker
+##Simple vertical and horizontal color picker
 
 ![Alt text](/screenshot.png?raw=true)
 
 ##Usage
+
+Grab Eclipse library project from this repository
+(Maven/Gradle support coming soon)
 
 Add view to your activity's layout and specify orientation:
 ```xml
