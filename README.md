@@ -4,7 +4,7 @@
 
 ##Usage
 
-Grab Eclipse library project from this repository
+Grab project from this repository
 (Maven/Gradle support coming soon)
 
 Add view to your activity's layout and specify orientation:
@@ -49,8 +49,8 @@ Android 2.3 (Gingerbread) and later.
 
 ##Todo
 * Maven/Gradle support
-* Expand/colapse animations
-* More color pickers in deferent styles
+* Expand/collapse animations
+* More color pickers in different styles
 
 ##License
 
