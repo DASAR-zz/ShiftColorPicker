@@ -3,10 +3,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp"
-    tools:context="uz.shift.colorpicker.MainActivity" >
+    tools:context="uz.shift.colorpicker.demo.MainActivity" >
 
     <uz.shift.colorpicker.LineColorPicker
-        xmlns:app="http://schemas.android.com/apk/res/uz.shift.colorpicker"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/picker"
         android:layout_width="match_parent"
         android:layout_height="60dp"
@@ -16,7 +16,7 @@
         app:orientation="horizontal" />
 
     <uz.shift.colorpicker.LineColorPicker
-        xmlns:app="http://schemas.android.com/apk/res/uz.shift.colorpicker"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/picker2"
         android:layout_width="60dp"
         android:layout_height="400dp"

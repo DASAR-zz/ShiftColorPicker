@@ -14,8 +14,8 @@ import android.view.View;
 
 public class LineColorPicker extends View {
 
-	private static final int HORIZONTAL = 0;
-	private static final int VERTICAL = 1;
+	public static final int HORIZONTAL = 0;
+	public static final int VERTICAL = 1;
 
 	int[] colors = Palette.DEFAULT;
 
@@ -382,7 +382,7 @@ public class LineColorPicker extends View {
 
 	/**
 	 * Set onColorChanged listener
-	 * 
+	 *
 	 * @param l
 	 */
 	public void setOnColorChangedListener(OnColorChangedListener l) {

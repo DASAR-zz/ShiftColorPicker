@@ -1,5 +1,7 @@
-package uz.shift.colorpicker;
+package uz.shift.colorpicker.demo;
 
+import uz.shift.colorpicker.LineColorPicker;
+import uz.shift.colorpicker.OnColorChangedListener;
 import android.app.Activity;
 import android.graphics.Color;
 import android.os.Bundle;
