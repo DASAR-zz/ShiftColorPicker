@@ -1,37 +1,47 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:padding="16dp"
-    tools:context="uz.shift.colorpicker.demo.MainActivity" >
-
-    <uz.shift.colorpicker.LineColorPicker
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/picker"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="48dp"
-        app:orientation="horizontal" />
-
-    <uz.shift.colorpicker.LineColorPicker
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/picker2"
-        android:layout_width="60dp"
-        android:layout_height="400dp"
-        android:layout_below="@+id/picker"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"
-        app:orientation="vertival" />
+    tools:context="uz.shift.colorpicker.demo.MainActivity">
 
     <TextView
         android:id="@+id/textViewColor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/picker"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="150dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="50dp"
         android:text="" />
 
-</RelativeLayout>
+    <uz.shift.colorpicker.LineColorPicker xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/picker"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="48dp"
+        app:orientation="horizontal" />
+
+    <uz.shift.colorpicker.LineColorPicker xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/picker2"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="50dp"
+        app:orientation="horizontal" />
+
+    <uz.shift.colorpicker.LineColorPicker xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/picker3"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:layout_marginTop="50dp"
+        app:orientation="horizontal" />
+
+    <uz.shift.colorpicker.LineColorPicker xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/picker4"
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:layout_marginTop="50dp"
+        app:orientation="horizontal" />
+
+
+</LinearLayout>

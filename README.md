@@ -10,7 +10,7 @@ Grab project from this repository
 Add view to your activity's layout and specify orientation:
 ```xml
    <uz.shift.colorpicker.LineColorPicker
-        xmlns:app="http://schemas.android.com/apk/res/uz.shift.colorpicker"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/picker"
         android:layout_width="match_parent"
         android:layout_height="60dp"
@@ -51,6 +51,7 @@ Android 2.3 (Gingerbread) and later.
 * Maven/Gradle support
 * Expand/collapse animations
 * More color pickers in different styles
+* rounded corners for line picker
 
 ##License
 
