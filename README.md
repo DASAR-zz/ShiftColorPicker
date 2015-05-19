@@ -40,7 +40,16 @@ int color = colorPicker.getColor();
 ```
 
 ##Downlaod
-[Releases](https://github.com/DASAR/ShiftColorPicker/releases)
+###Gradle
+```gradle
+repositories {
+    maven {
+        url  "http://dl.bintray.com/dasar/ShiftColorPicker"
+    }
+}
+```
+
+###[Releases page](https://github.com/DASAR/ShiftColorPicker/releases) 
 or grab latest version from repository.
 
 ##Requirements
@@ -48,7 +57,6 @@ or grab latest version from repository.
 Android 2.3 (Gingerbread) and later.
 
 ##Todo
-* Maven/Gradle support
 * Expand/collapse animations
 * More color pickers in different styles
 * rounded corners for line picker
