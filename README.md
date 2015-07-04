@@ -31,7 +31,7 @@ colorPicker.setSelectedColor(Color.RED);
 colorPicker.setOnColorChangedListener(new OnColorChangedListener() {
 			@Override
 			public void onColorChanged(int c) {
-				Log.d(TAG, "Selectede color " + Integer.toHexString(c));
+				Log.d(TAG, "Selected color " + Integer.toHexString(c));
 			}
 		});
 
@@ -40,14 +40,6 @@ int color = colorPicker.getColor();
 ```
 
 ##Downlaod
-###Gradle
-```gradle
-repositories {
-    maven {
-        url  "http://dl.bintray.com/dasar/ShiftColorPicker"
-    }
-}
-```
 
 ###[Releases page](https://github.com/DASAR/ShiftColorPicker/releases) 
 or grab latest version from repository.

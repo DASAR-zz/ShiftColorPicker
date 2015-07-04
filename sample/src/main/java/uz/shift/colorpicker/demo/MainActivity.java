@@ -58,7 +58,7 @@ public class MainActivity extends Activity {
 
 			@Override
 			public void onColorChanged(int c) {
-				Log.d(TAG, "Selectede color " + Integer.toHexString(c));
+				Log.d(TAG, "Selected color " + Integer.toHexString(c));
 
 				updateColor(c);
 			}
