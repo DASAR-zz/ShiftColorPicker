@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="color_0">#f44336</color>
+    <color name="color_1">#ff9800</color>
+    <color name="color_2">#ffeb3b</color>
+    <color name="color_3">#4caf50</color>
+    <color name="color_4">#03a9f4</color>
+    <color name="color_5">#2196f3</color>
+    <color name="color_6">#9c27b0</color>
+
+    <integer-array name="sample_colors">
+        <item>@color/color_0</item>
+        <item>@color/color_1</item>
+        <item>@color/color_2</item>
+        <item>@color/color_3</item>
+        <item>@color/color_4</item>
+        <item>@color/color_5</item>
+        <item>@color/color_6</item>
+    </integer-array>
+
+</resources>

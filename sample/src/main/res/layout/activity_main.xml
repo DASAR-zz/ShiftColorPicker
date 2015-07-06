@@ -1,5 +1,7 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -15,33 +17,40 @@
         android:layout_marginTop="50dp"
         android:text="" />
 
-    <uz.shift.colorpicker.LineColorPicker xmlns:app="http://schemas.android.com/apk/res-auto"
+    <uz.shift.colorpicker.LineColorPicker
         android:id="@+id/picker"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_marginTop="48dp"
         app:orientation="horizontal" />
 
-    <uz.shift.colorpicker.LineColorPicker xmlns:app="http://schemas.android.com/apk/res-auto"
+    <uz.shift.colorpicker.LineColorPicker
         android:id="@+id/picker2"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:layout_marginTop="50dp"
         app:orientation="horizontal" />
 
-    <uz.shift.colorpicker.LineColorPicker xmlns:app="http://schemas.android.com/apk/res-auto"
+    <uz.shift.colorpicker.LineColorPicker
+        android:layout_width="match_parent"
+        android:layout_height="60dip"
         android:id="@+id/picker3"
-        android:layout_width="match_parent"
-        android:layout_height="20dp"
-        android:layout_marginTop="50dp"
-        app:orientation="horizontal" />
+        app:selectedColorIndex="3"
+        app:colors="@array/sample_colors"/>
 
-    <uz.shift.colorpicker.LineColorPicker xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/picker4"
-        android:layout_width="match_parent"
-        android:layout_height="10dp"
-        android:layout_marginTop="50dp"
-        app:orientation="horizontal" />
+    <!--<uz.shift.colorpicker.LineColorPicker-->
+        <!--android:id="@+id/picker3"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="20dp"-->
+        <!--android:layout_marginTop="50dp"-->
+        <!--app:orientation="horizontal" />-->
+
+    <!--<uz.shift.colorpicker.LineColorPicker-->
+        <!--android:id="@+id/picker4"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="10dp"-->
+        <!--android:layout_marginTop="50dp"-->
+        <!--app:orientation="horizontal" />-->
 
 
 </LinearLayout>
