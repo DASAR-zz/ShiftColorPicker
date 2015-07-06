@@ -29,7 +29,6 @@ public class MainActivity extends Activity {
 		setContentView(R.layout.activity_main);
 
 		horizontalPicker = (LineColorPicker) findViewById(R.id.picker);
-
 		verticalPicker = (LineColorPicker) findViewById(R.id.picker2);
 
 		tvColor = (TextView) findViewById(R.id.textViewColor);
@@ -67,6 +66,8 @@ public class MainActivity extends Activity {
 		horizontalPicker.setOnColorChangedListener(onChangeListener);
 		verticalPicker.setOnColorChangedListener(onChangeListener);
 
+		final LineColorPicker xmlPicker = (LineColorPicker) findViewById(R.id.picker3);
+		xmlPicker.setOnColorChangedListener(onChangeListener);
 	}
 
 	/**

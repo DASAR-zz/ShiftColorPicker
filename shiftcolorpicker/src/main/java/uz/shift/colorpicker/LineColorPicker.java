@@ -17,7 +17,14 @@ public class LineColorPicker extends View {
 	public static final int HORIZONTAL = 0;
 	public static final int VERTICAL = 1;
 
-	int[] colors = Palette.DEFAULT;
+	int[] colors;
+    {
+        if (isInEditMode()) {
+            colors = Palette.DEFAULT;
+        } else {
+            colors = new int[1];
+        }
+    }
 
 	private Paint paint;
 	private Rect rect = new Rect();
@@ -39,12 +46,25 @@ public class LineColorPicker extends View {
 		paint = new Paint();
 		paint.setStyle(Style.FILL);
 
-		TypedArray a = context.getTheme().obtainStyledAttributes(attrs,
-				R.styleable.LineColorPicker, 0, 0);
+		final TypedArray a = context.getTheme().obtainStyledAttributes(attrs, R.styleable.LineColorPicker, 0, 0);
 
 		try {
-			mOrientation = a.getInteger(
-					R.styleable.LineColorPicker_orientation, HORIZONTAL);
+			mOrientation = a.getInteger(R.styleable.LineColorPicker_orientation, HORIZONTAL);
+            if (!isInEditMode()) {
+                final int colorsArrayResId = a.getResourceId(R.styleable.LineColorPicker_colors, -1);
+                if (colorsArrayResId > 0) {
+                    final int[] colors = context.getResources().getIntArray(colorsArrayResId);
+                    setColors(colors);
+                }
+            }
+            final int selected = a.getInteger(R.styleable.LineColorPicker_selectedColorIndex, -1);
+            if (selected != -1) {
+                final int[] currentColors = getColors();
+                final int currentColorsLength = currentColors != null ? currentColors.length : 0;
+                if (selected < currentColorsLength) {
+                    setSelectedColorPosition(selected);
+                }
+            }
 		} finally {
 			a.recycle();
 		}
