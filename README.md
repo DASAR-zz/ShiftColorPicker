@@ -2,6 +2,8 @@
 
 ![Alt text](/screenshot.png?raw=true)
 
+[ ![Download](https://api.bintray.com/packages/dasar/maven/shiftcolorpicker/images/download.svg) ](https://bintray.com/dasar/maven/shiftcolorpicker/_latestVersion)
+
 ##Usage
 
 Add view to your activity's layout and specify orientation:
