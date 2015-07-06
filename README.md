@@ -14,7 +14,13 @@ Add view to your activity's layout and specify orientation:
         android:id="@+id/picker"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        app:orientation="horizontal" />
+        app:orientation="horizontal"/>
+```
+
+Optionally you can set colors directly in layout file:
+```xml
+        app:colors="@array/sample_colors"
+        app:selectedColorIndex="3"
 ```
 
 Setup view
