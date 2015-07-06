@@ -4,9 +4,6 @@
 
 ##Usage
 
-Grab project from this repository
-(Maven/Gradle support coming soon)
-
 Add view to your activity's layout and specify orientation:
 ```xml
    <uz.shift.colorpicker.LineColorPicker
@@ -46,6 +43,17 @@ int color = colorPicker.getColor();
 ```
 
 ##Downlaod
+
+###Gradle
+```gradle
+repositories {
+     maven {
+        url  "http://dl.bintray.com/dasar/maven"
+     }
+}
+
+compile(group: 'uz.shift', name: 'colorpicker', version: '0.5', ext: 'aar')
+```
 
 ###[Releases page](https://github.com/DASAR/ShiftColorPicker/releases) 
 or grab latest version from repository.
