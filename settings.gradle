@@ -1,2 +1,2 @@
-include ':shiftcolorpicker'
+include ':shiftcolorpicker', ':sample2'
 include ':sample'
