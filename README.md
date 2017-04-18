@@ -1,10 +1,10 @@
-##Simple vertical and horizontal color picker
+## Simple vertical and horizontal color picker
 
 ![Alt text](/screenshot.png?raw=true)
 
 [ ![Download](https://api.bintray.com/packages/dasar/maven/shiftcolorpicker/images/download.svg) ](https://bintray.com/dasar/maven/shiftcolorpicker/_latestVersion)
 
-##Usage
+## Usage
 
 Add view to your activity's layout and specify orientation:
 ```xml
@@ -44,9 +44,9 @@ colorPicker.setOnColorChangedListener(new OnColorChangedListener() {
 int color = colorPicker.getColor();
 ```
 
-##Downlaod
+## Downlaod
 
-###Gradle
+### Gradle
 ```gradle
 repositories {
      maven {
@@ -57,19 +57,19 @@ repositories {
 compile(group: 'uz.shift', name: 'colorpicker', version: '0.5', ext: 'aar')
 ```
 
-###[Releases page](https://github.com/DASAR/ShiftColorPicker/releases) 
+### [Releases page](https://github.com/DASAR/ShiftColorPicker/releases) 
 or grab latest version from repository.
 
-##Requirements
+## Requirements
 
 Android 2.3 (Gingerbread) and later.
 
-##Todo
+## Todo
 * Expand/collapse animations
 * More color pickers in different styles
 * rounded corners for line picker
 
-##License
+## License
 
 The MIT License (MIT)
 
