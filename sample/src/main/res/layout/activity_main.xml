@@ -22,21 +22,21 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_marginTop="48dp"
-        app:orientation="horizontal" />
+        app:lcp_orientation="horizontal" />
 
     <uz.shift.colorpicker.LineColorPicker
         android:id="@+id/picker2"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:layout_marginTop="50dp"
-        app:orientation="horizontal" />
+        app:lcp_orientation="horizontal" />
 
     <uz.shift.colorpicker.LineColorPicker
         android:layout_width="match_parent"
         android:layout_height="60dip"
         android:id="@+id/picker3"
-        app:selectedColorIndex="3"
-        app:colors="@array/sample_colors"/>
+        app:lcp_selectedColorIndex="3"
+        app:lcp_colors="@array/sample_colors"/>
 
     <!--<uz.shift.colorpicker.LineColorPicker-->
         <!--android:id="@+id/picker3"-->

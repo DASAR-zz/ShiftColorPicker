@@ -49,10 +49,10 @@ public class LineColorPicker extends View {
 		final TypedArray a = context.getTheme().obtainStyledAttributes(attrs, R.styleable.LineColorPicker, 0, 0);
 
 		try {
-			mOrientation = a.getInteger(R.styleable.LineColorPicker_orientation, HORIZONTAL);
+			mOrientation = a.getInteger(R.styleable.LineColorPicker_lcp_orientation, HORIZONTAL);
 
             if (!isInEditMode()) {
-                final int colorsArrayResId = a.getResourceId(R.styleable.LineColorPicker_colors, -1);
+                final int colorsArrayResId = a.getResourceId(R.styleable.LineColorPicker_lcp_colors, -1);
 
                 if (colorsArrayResId > 0) {
                     final int[] colors = context.getResources().getIntArray(colorsArrayResId);
@@ -60,7 +60,7 @@ public class LineColorPicker extends View {
                 }
             }
 
-            final int selected = a.getInteger(R.styleable.LineColorPicker_selectedColorIndex, -1);
+            final int selected = a.getInteger(R.styleable.LineColorPicker_lcp_selectedColorIndex, -1);
 
             if (selected != -1) {
                 final int[] currentColors = getColors();
